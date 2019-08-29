@@ -1,0 +1,93 @@
+.TH The Shell Project "28 August 2019" "Relaxforever && Alafresh" "Holberton Man Page - General User Commands"
+.SH THE SHELL
+The shell project is fundamentally a project made to understand how really a shell and implements the juicy stuff of C in it, so we made a basic shell that you can use and check everything about it, This is the climax of everything we had done in C this first trimester.
+
+This shell is expected to do:
+
+.B handle basic commands with basic arguments Ex: /bin/ls
+.br
+.B Be capable of exiting the shell succesfully.
+.br
+.B Be awesome.!
+.SH SYNOPSIS
+.B bash [options] [file]
+
+.SH DESCRIPTION
+the standard command interpreter for the system. shell is a environment and interpreter for runnig commands in Linux, behind the terminal the most used shell is bash, this is a simple shell tested in ubuntu 14.04 that support some usual commands in linux. This is a basic shell so don't expect anything out of the extraordinary.
+
+.SH COMPILATION
+You need to be carefull when you will compile there are not other .c, file this shell will be compiled this way:
+
+.B $ -Wall -Werror -Wextra and -pedantic *.c -o hsh
+
+.B And executed this way:
+
+.B $ ./hsh
+
+.SH TESTING
+$ /bin/ls
+.br
+example.txt hello.txt world.txt
+$ ls
+.br
+example.txt hello.txt world.txt
+
+We can also use it on non-interactive mode
+.br
+$ echo "/bin/ls" | ./hsh
+.br
+example.txt hello.txt world.txt
+.SH HEADER FILE
+#ifndef _SHELLLIST_H_
+.br
+#define _SHELLLIST_H_
+
+#include <stdio.h>
+.br
+#include <unistd.h>
+.br
+#include <sys/types.h>
+.br
+#include <sys/wait.h>
+.br
+#include <time.h>
+.br
+#include <stdlib.h>
+.br
+#include <string.h>
+.br
+void sh_prompt(void);
+.br
+char *sh_readline(void);
+.br
+char **sh_strok(char *line);
+.br
+int sh_execve(char **args);
+.br
+int sh_help(char **args);
+.br
+int sh_cd(char **args);
+.br
+int sh_exit(char **args);
+.br
+int _strlen(char *s);
+.br
+char *_strcat(char *dest, char *src);
+.br
+int sh_num_builtins(void);
+.br
+int _strcmp(char *s1, char *s2);
+.br
+int sh_cmp(char **args);
+.br
+char *_strstr(char *haystack, char *needle);
+.br
+extern char **environ;
+.br
+char **_getenv(const char *name);
+.br
+char *_strcpy(char *dest, char *src);
+.br
+char *slash(void);
+.br
+void sighandlerC(int sig);
